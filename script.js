@@ -1,3 +1,10 @@
+//screen
+const calculatorScreen = document.querySelector('.calculator-screen')
+
+const updateScreen = (number) => {
+    calculatorScreen.value = number
+}
+
 //button
 const numbers = document.querySelectorAll(".number")
 
@@ -7,13 +14,6 @@ numbers.forEach((number) => {
         updateScreen(currentNumber)
     })
 })
-
-//screen
-const calculatorScreen = document.querySelector('.calculator-screen')
-
-const updateScreen = (number) => {
-    calculatorScreen.value = number
-}
 
 let prevNumber = ''
 let calculationOperator = ''
@@ -63,17 +63,17 @@ const calculate = () => {
             break
 
         case "-":
-            result = parseFloat(prevNumber) - parseFloat(currentNumber)
+            result = prevNumber - currentNumber
             break
 
         case "*":
-            result = parseFloat(prevNumber) * parseFloat(currentNumber)
+            result = prevNumber * currentNumber
             break
 
         case "/":
-            result = parseFloat(prevNumber) / parseFloat(currentNumber)
+            result = prevNumber / currentNumber
             break
-            
+
         case "%":
             result = parseFloat(prevNumber) / 100
             break
@@ -89,17 +89,17 @@ const calculate = () => {
 //button AC
 const clearBtn = document.querySelector('.all-clear')
 
-clearBtn.addEventListener('click', () => {
-    clearAll()
-    updateScreen(currentNumber)
-})
-
 //function AC
 const clearAll = () => {
     prevNumber = ''
     calculationOperator = ''
     currentNumber = '0'
 }
+
+clearBtn.addEventListener('click', () => {
+    clearAll()
+    updateScreen(currentNumber)
+})
 
 //button decimal
 const decimal = document.querySelector('.decimal')
